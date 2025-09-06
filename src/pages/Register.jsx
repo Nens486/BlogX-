@@ -10,6 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import apiClient from "../callApi/configAxios";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("https://blog-x-backend.vercel.app/api/v1/user/register", {
+      const { data } = await apiClient.post("/api/v1/user/register", {
         username: inputs.username,
         email: inputs.email,
         password: inputs.password,

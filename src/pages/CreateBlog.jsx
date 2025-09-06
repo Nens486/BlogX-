@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import CreateIcon from "@mui/icons-material/Create";
+import apiClient from "../callApi/configAxios";
 
 const CreateBlog = () => {
   const id = localStorage.getItem("userId");
@@ -24,7 +25,7 @@ const CreateBlog = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("https://blog-x-backend.vercel.app/api/v1/blog/createblog", {
+      const { data } = await apiClient.post("/api/v1/blog/createblog", {
         title: inputs.title,
         description: inputs.description,
         image: inputs.image,

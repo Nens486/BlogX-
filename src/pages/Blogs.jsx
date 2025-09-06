@@ -3,13 +3,14 @@ import axios from "axios";
 import BlogCard from "../components/Blogcard";
 import { Grid, Typography, Container } from "@mui/material";
 import toast from "react-hot-toast";
+import apiClient from "../callApi/configAxios";
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
 
   const getAllBlogs = async () => {
     try {
-      const { data } = await axios.get("https://blog-x-backend.vercel.app/api/v1/blog/allblogs");
+      const { data } = await apiClient.get("/api/v1/blog/allblogs");
       if (data?.success) {
         setBlogs(data?.blogs || []);
       } else {

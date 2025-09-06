@@ -11,6 +11,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import EditNoteIcon from "@mui/icons-material/EditNote";
+import apiClient from "../callApi/configAxios";
 
 const BlogDetails = () => {
   const [blog, setBlog] = useState({});
@@ -20,7 +21,7 @@ const BlogDetails = () => {
 
   const getBlogDetail = async () => {
     try {
-      const { data } = await axios.get(`https://blog-x-backend.vercel.app/api/v1/blog/getblog/${id}`);
+      const { data } = await apiClient.get(`/api/v1/blog/getblog/${id}`);
       if (data?.success) {
         setBlog(data?.blog);
         setInputs({
@@ -49,7 +50,7 @@ const BlogDetails = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.put(`https://blog-x-backend.vercel.app/api/v1/blog/updateblog/${id}`, {
+      const { data } = await apiClient.put(`/api/v1/blog/updateblog/${id}`, {
         title: inputs.title,
         description: inputs.description,
         image: inputs.image,

@@ -3,6 +3,7 @@ import axios from "axios";
 import BlogCard from "../components/Blogcard";
 import { Grid, Typography, Container } from "@mui/material";
 import toast from "react-hot-toast";
+import apiClient from "../callApi/configAxios";
 
 const Userblogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -10,7 +11,7 @@ const Userblogs = () => {
   const getUserBlogs = async () => {
     try {
       const id = localStorage.getItem("userId");
-      const { data } = await axios.get(`https://blog-x-backend.vercel.app/api/v1/blog/userblogs/${id}`);
+      const { data } = await apiClient.get(`/api/v1/blog/userblogs/${id}`);
 
       if (data?.success) {
         setBlogs(data?.userBlog?.blogs || []);
