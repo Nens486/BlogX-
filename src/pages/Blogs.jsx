@@ -9,7 +9,7 @@ const Blogs = () => {
 
   const getAllBlogs = async () => {
     try {
-      const { data } = await axios.get("/api/v1/blog/allblogs");
+      const { data } = await axios.get("https://blog-x-backend.vercel.app/api/v1/blog/allblogs");
       if (data?.success) {
         setBlogs(data?.blogs || []);
       } else {

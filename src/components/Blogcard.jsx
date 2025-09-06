@@ -21,7 +21,7 @@ const BlogCard = ({ id, title, description, image, username, time, isUser }) => 
   // Handle blog delete
   const handleDelete = async () => {
     try {
-      const { data } = await axios.delete(`/api/v1/blog/deleteblog/${id}`);
+      const { data } = await axios.delete(`https://blog-x-backend.vercel.app/api/v1/blog/deleteblog/${id}`);
       if (data?.success) {
         toast.success("Blog deleted successfully 🚀");
         window.location.reload();

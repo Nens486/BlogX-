@@ -20,7 +20,7 @@ const BlogDetails = () => {
 
   const getBlogDetail = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/blog/getblog/${id}`);
+      const { data } = await axios.get(`https://blog-x-backend.vercel.app/api/v1/blog/getblog/${id}`);
       if (data?.success) {
         setBlog(data?.blog);
         setInputs({
@@ -49,7 +49,7 @@ const BlogDetails = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.put(`/api/v1/blog/updateblog/${id}`, {
+      const { data } = await axios.put(`https://blog-x-backend.vercel.app/api/v1/blog/updateblog/${id}`, {
         title: inputs.title,
         description: inputs.description,
         image: inputs.image,

@@ -31,7 +31,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("/api/v1/user/register", {
+      const { data } = await axios.post("https://blog-x-backend.vercel.app/api/v1/user/register", {
         username: inputs.username,
         email: inputs.email,
         password: inputs.password,

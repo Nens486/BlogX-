@@ -10,7 +10,7 @@ const Userblogs = () => {
   const getUserBlogs = async () => {
     try {
       const id = localStorage.getItem("userId");
-      const { data } = await axios.get(`/api/v1/blog/userblogs/${id}`);
+      const { data } = await axios.get(`https://blog-x-backend.vercel.app/api/v1/blog/userblogs/${id}`);
 
       if (data?.success) {
         setBlogs(data?.userBlog?.blogs || []);
